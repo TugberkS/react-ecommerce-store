@@ -67,7 +67,7 @@ export default class RuleEngine {
           ruleSatisfied = ruleSatisfied || await this.checkRule(chain);
           break;
         case "xor":
-          ruleSatisfied = ruleSatisfied != await this.checkRule(chain);
+          ruleSatisfied = ruleSatisfied !== await this.checkRule(chain);
           break;
         default:
           logger.failed("No such chain condition");
