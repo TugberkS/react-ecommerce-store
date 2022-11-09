@@ -15,6 +15,7 @@ import { ReactComponent as Add } from "../../Resources/image/add.svg";
 import AddedToCartBig from '../../Components/AddedToCart/AddedToCartBig';
 import Cart from '../../Components/Cart/Cart';
 import templateGame from '../../utils/templateGame';
+import * as _Glov from 'glov-sdk';
 
 const GamePage = props => {
   const {
@@ -50,6 +51,9 @@ const GamePage = props => {
   let { gameId } = useParams();
   const location = useLocation();
   const [carouselState, setCarouselState] = useState(0);
+  const [glovTitleState, setGlovTitleState] = useState("");
+
+  let gameName = _Glov.useRobot("Tugs' Amazing New Game!") || selectedGame.name;
 
   const incrementCarousel = (e) => {
     if (carouselState === 3) {
@@ -87,6 +91,11 @@ const GamePage = props => {
   
   return (
     <>
+    <button
+      onClick={() => {setGlovTitleState("yes")}}
+    >
+      Click Me
+    </button>
         <div className={styles.gamepage}>
             {cartDisplayed ? <Cart 
               cartDisplayed={cartDisplayed} 
@@ -132,7 +141,7 @@ const GamePage = props => {
                         Store
                     </button>
 
-                    <h1>{selectedGame ? selectedGame.name : templateGame.name}</h1>
+                    <h1>{glovTitleState ? "Halilin siki tugberkten büyük": gameName}</h1>
                 </header>
 
                 <section className={styles.game}>
@@ -159,7 +168,7 @@ const GamePage = props => {
                       >
                         <AnimatedText>
                              <div className={textExtended ? styles.open : styles.closed}>
-                                 <a href={selectedGame ? selectedGame.link : templateGame.link} target="_blank">{selectedGame ? selectedGame.name : "No"} Website</a>
+                                 <a href={selectedGame ? selectedGame.link : templateGame.link} target="_blank" rel="noreferrer">{selectedGame ? selectedGame.name : "No"} Website</a>
                                  <h4>Released: {selectedGame ? selectedGame.release : templateGame.release}</h4>
                                  <h4>Platforms: {selectedGame ? selectedGame.platforms : templateGame.platforms}</h4>
                                  <h4>Main Genre: {selectedGame ? selectedGame.genre : templateGame.genre}</h4>

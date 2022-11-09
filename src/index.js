@@ -8,14 +8,21 @@ import './Resources/fonts/walsheim/GTWalsheimPro-Regular.ttf';
 import './Resources/fonts/walsheim/GTWalsheimPro-Light.ttf';
 import './Resources/fonts/walsheim/GTWalsheimPro-Bold.ttf';
 import { BrowserRouter } from 'react-router-dom';
+import * as _Glov from 'glov-sdk';
+console.log(_Glov);
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const glov = _Glov.Glov("test_client_id");
+
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
-  </React.StrictMode>
+    <React.StrictMode>
+      <BrowserRouter>
+        <_Glov.GlovProvider glov={glov}>
+          <App />
+        </_Glov.GlovProvider>
+      </BrowserRouter>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

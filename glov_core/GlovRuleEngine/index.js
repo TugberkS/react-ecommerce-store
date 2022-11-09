@@ -6,7 +6,7 @@ import {checkUrlRule} from "./urlChecker";
 import {checkEnvRule} from "./envChecker";
 import {checkProductInfoRule} from "./productInfoChecker";
 import Logger from "../logger";
-import {addToBeagleInfoLayer} from "../BeagleInfoLayer";
+import { pushToGlovInfoLayer } from "../GlovInfoLayer";
 const logger = new Logger("GlovRuleEngine");
 
 export default class RuleEngine {
@@ -78,6 +78,7 @@ export default class RuleEngine {
   }
 
   async checkEligibilityRules() {
+    if (!this.eligibilityRules) return;
     for (const [key, rules] of Object.entries(this.eligibilityRules)) {
       const satisfiedRuleIds = [];
       for (const rule of rules) {
@@ -85,7 +86,7 @@ export default class RuleEngine {
           satisfiedRuleIds.push(rule.name);
         }
       }
-      addToBeagleInfoLayer(`eRules.${key}`, satisfiedRuleIds);
+      pushToGlovInfoLayer(`eRules.${key}`, satisfiedRuleIds)
     }
   }
 }

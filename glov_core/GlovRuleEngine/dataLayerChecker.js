@@ -1,6 +1,6 @@
 import {conditionChecker} from "../utils";
-import {getFromBeagleInfoLayer} from "../BeagleInfoLayer";
 import Logger from "../logger";
+import { getFromGlovInfoLayer } from "../GlovInfoLayer";
 const logger = new Logger("BeagleInfoLayerChecker");
 
 export const checkDataLayerRule = async (rule) =>{
@@ -12,7 +12,7 @@ export const checkDataLayerRule = async (rule) =>{
 
 export const dataLayerFinder = async (key) => {
   logger.log("Searching beagleInfoLayer for key ", key);
-  const res = await getFromBeagleInfoLayer(key, true, 25, 500);
+  const res = await getFromGlovInfoLayer(key);
   if (res !== null && res !== undefined) {
     logger.success(`Found key ${key} with value ${res}`);
     return res;
