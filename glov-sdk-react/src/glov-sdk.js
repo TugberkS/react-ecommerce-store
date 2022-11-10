@@ -12,7 +12,7 @@ export const Glov = (clientId) => {
 export const GlovProvider = ({children, glov}) => {
     return (
         <GlovContext.Provider value={{glov}}>
-            {children}
+            {children} 
         </GlovContext.Provider>
     )
 }
