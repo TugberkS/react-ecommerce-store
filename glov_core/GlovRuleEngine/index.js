@@ -6,7 +6,7 @@ import {checkUrlRule} from "./urlChecker";
 import {checkEnvRule} from "./envChecker";
 import {checkProductInfoRule} from "./productInfoChecker";
 import Logger from "../logger";
-import { pushToGlovInfoLayer } from "../GlovInfoLayer";
+import { pushToGlovInfoLayer } from "../GlovInfoLayer/index";
 const logger = new Logger("GlovRuleEngine");
 
 export default class RuleEngine {

@@ -1,7 +1,0 @@
-{
-  "name": "glov_react",
-  "dependencies": {
-    "babel": "^6.23.0",
-    "react": "^18.2.0"
-  }
-}

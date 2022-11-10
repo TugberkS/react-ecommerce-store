@@ -1,4 +1,5 @@
-import RuleEngine from "./GlovRuleEngine";
+import RuleEngine from "./GlovRuleEngine/index";
+
 export const fetchConfig = async (clientId) => {
     let robotsObj, robotsTimestamp, fetchAll = false;
     try {

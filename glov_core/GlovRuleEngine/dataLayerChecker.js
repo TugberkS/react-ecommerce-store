@@ -1,6 +1,6 @@
 import {conditionChecker} from "../utils";
 import Logger from "../logger";
-import { getFromGlovInfoLayer } from "../GlovInfoLayer";
+import { getFromGlovInfoLayer } from "../GlovInfoLayer/index";
 const logger = new Logger("BeagleInfoLayerChecker");
 
 export const checkDataLayerRule = async (rule) =>{

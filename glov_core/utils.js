@@ -6,7 +6,7 @@ import {
   TREATMENT_WEIGHTS_LOCATION,
   TREATMENTS_LOCATION,
 } from "./constants";
-import { pushToGlovInfoLayer } from "./GlovInfoLayer";
+import { pushToGlovInfoLayer } from "./GlovInfoLayer/index";
 import Logger from "./logger";
 
 const logger = new Logger("BeagleUtils");

@@ -15,7 +15,7 @@ import { ReactComponent as Add } from "../../Resources/image/add.svg";
 import AddedToCartBig from '../../Components/AddedToCart/AddedToCartBig';
 import Cart from '../../Components/Cart/Cart';
 import templateGame from '../../utils/templateGame';
-import * as _Glov from 'glov-sdk';
+import {useRobot} from 'glov-sdk-react';
 
 const GamePage = props => {
   const {
@@ -51,9 +51,8 @@ const GamePage = props => {
   let { gameId } = useParams();
   const location = useLocation();
   const [carouselState, setCarouselState] = useState(0);
-  const [glovTitleState, setGlovTitleState] = useState("");
-
-  let gameName = _Glov.useRobot("Tugs' Amazing New Game!") || selectedGame.name;
+  
+  const gameName = useRobot("game_title") || selectedGame.name;
 
   const incrementCarousel = (e) => {
     if (carouselState === 3) {
@@ -91,11 +90,6 @@ const GamePage = props => {
   
   return (
     <>
-    <button
-      onClick={() => {setGlovTitleState("yes")}}
-    >
-      Click Me
-    </button>
         <div className={styles.gamepage}>
             {cartDisplayed ? <Cart 
               cartDisplayed={cartDisplayed} 
@@ -141,7 +135,7 @@ const GamePage = props => {
                         Store
                     </button>
 
-                    <h1>{glovTitleState ? "Halilin siki tugberkten büyük": gameName}</h1>
+                    <h1>{gameName}</h1>
                 </header>
 
                 <section className={styles.game}>

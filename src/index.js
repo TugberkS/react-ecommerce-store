@@ -8,19 +8,18 @@ import './Resources/fonts/walsheim/GTWalsheimPro-Regular.ttf';
 import './Resources/fonts/walsheim/GTWalsheimPro-Light.ttf';
 import './Resources/fonts/walsheim/GTWalsheimPro-Bold.ttf';
 import { BrowserRouter } from 'react-router-dom';
-import * as _Glov from 'glov-sdk';
-console.log(_Glov);
+import {Glov, GlovProvider} from 'glov-sdk-react';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const glov = _Glov.Glov("test_client_id");
+const glov = Glov("test_client_id");
 
 root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <_Glov.GlovProvider glov={glov}>
+        <GlovProvider glov={glov}>
           <App />
-        </_Glov.GlovProvider>
+        </GlovProvider>
       </BrowserRouter>
     </React.StrictMode>
 );
